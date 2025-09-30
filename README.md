@@ -383,6 +383,5 @@ Online bookstore; Users register and log/sign in; place orders, search books, au
   }
 ]
 ```
-
 ### Database schema
-![Database schema](db.png)
+![Database schema](db_sch.png)
