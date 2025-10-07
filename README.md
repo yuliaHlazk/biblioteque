@@ -18,28 +18,33 @@ Online bookstore; Users register and log/sign in; place orders, search books, au
 |-----------|------------------------------|------------------------------------------|
 | POST      | /api/auth/register           | To sign up a new user                    |
 | POST      | /api/auth/login              | To log in an existing user               |
-| GET       | /api/profile                 | To get user profile and order history    |
-| PUT       | /api/profile                 | To update user profile                   |
+| GET       | /api/profile                 | To get current user profile and order history    |
+| PUT       | /api/profile                 | To update the current user profile       |
+| GET       | /api/users                  | To get list of all users *(admin only)* |
+| GET       | /api/users/:user_id          | To get another user's profile *(admin only)* |
 | GET       | /api/books                   | To retrieve all books (can do with filters) |
 | GET       | /api/books/:book_id          | To retrieve details of a single book     |
 | POST      | /api/books                   | To create a new book *(admin only)*      |
 | PUT       | /api/books/:book_id          | To edit a book *(admin only)*            |
 | DELETE    | /api/books/:book_id          | To delete a book *(admin only)*          |
 | GET       | /api/authors                 | To retrieve all authors                  |
-| GET       | /api/authors/:authorId       | To retrieve details of a single author   |
+| GET       | /api/authors/:author_id       | To retrieve details of a single author   |
 | POST      | /api/authors                 | To create a new author *(admin only)*    |
-| PUT       | /api/authors/:authorId       | To edit an author *(admin only)*         |
-| DELETE    | /api/authors/:authorId       | To delete an author *(admin only)*       |
+| PUT       | /api/authors/:author_id       | To edit an author *(admin only)*         |
+| DELETE    | /api/authors/:author_id       | To delete an author *(admin only)*       |
 | GET       | /api/publishers              | To retrieve all publishers               |
-| GET       | /api/publishers/:publisherId | To retrieve details of a publisher       |
+| GET       | /api/publishers/:publisher_id | To retrieve details of a publisher       |
 | POST      | /api/publishers              | To create a new publisher *(admin only)* |
-| PUT       | /api/publishers/:publisherId | To edit a publisher *(admin only)*       |
-| DELETE    | /api/publishers/:publisherId | To delete a publisher *(admin only)*     |
+| PUT       | /api/publishers/:publisher_id | To edit a publisher *(admin only)*       |
+| DELETE    | /api/publishers/:publisher_id | To delete a publisher *(admin only)*     |
 | POST      | /api/cart/add                | To add a book to cart                    |
-| GET       | /api/cart                    | To view cart contents                    |
-| POST      | /api/cart/checkout           | To create an order from the cart         |
-| GET       | /api/orders                  | To view user’s order history             |
-| GET       | /api/about                   | To retrieve “About us” information       |
+| GET       | /api/cart                    | To view current user's cart  |
+| GET       | /api/cart/:user_id           | To view another user's cart *(admin only)* |
+| DELETE    | /api/cart/items/:item_id     | To remove a specific item from cart |
+| POST      | /api/cart/checkout           | To create an order from the cart |
+| GET       | /api/orders                  | To view current user’s order history |
+| GET       | /api/orders/:user_id         | To view another user’s orders |
+| GET       | /api/about                   | To retrieve “About us” information   |
 
 
 
