@@ -1,0 +1,160 @@
+{
+    "info": {
+      "_postman_id": "c9a5cb8c-3f1a-4d9e-b86e-66d5d573ab24",
+      "name": "Bookstore API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get all books",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/books/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "books", ""]
+          }
+        }
+      },
+      {
+        "name": "Create book",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"title\": \"The City\",\n  \"genre\": \"novel\",\n  \"price\": \"250.00\",\n  \"author_id\": 1,\n  \"publisher_id\": 1\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/books/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "books", ""]
+          }
+        }
+      },
+      {
+        "name": "Get single book",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/books/1/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "books", "1", ""]
+          }
+        }
+      },
+      {
+        "name": "Update book",
+        "request": {
+          "method": "PUT",
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"title\": \"The City (Updated)\",\n  \"genre\": \"novel\",\n  \"price\": \"300.00\",\n  \"author_id\": 1,\n  \"publisher_id\": 1\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/books/1/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "books", "1", ""]
+          }
+        }
+      },
+      {
+        "name": "Delete book",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/books/1/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "books", "1", ""]
+          }
+        }
+      },
+      {
+        "name": "Get all authors",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/authors/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "authors", ""]
+          }
+        }
+      },
+      {
+        "name": "Create author",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Valerian Pidmohylnyi\",\n  \"bio\": \"Ukrainian novelist and short story writer.\"\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/authors/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "authors", ""]
+          }
+        }
+      },
+      {
+        "name": "Get all publishers",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/publishers/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "publishers", ""]
+          }
+        }
+      },
+      {
+        "name": "Create publisher",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"A-BA-BA-HA-LA-MA-HA\",\n  \"description\": \"Ukrainian publishing house.\"\n}"
+          },
+          "url": {
+            "raw": "http://127.0.0.1:8000/api/publishers/",
+            "protocol": "http",
+            "host": ["127", "0", "0", "1"],
+            "port": "8000",
+            "path": ["api", "publishers", ""]
+          }
+        }
+      }
+    ]
+  }
+  
