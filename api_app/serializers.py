@@ -15,14 +15,8 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(read_only=True)
-    publisher = PublisherSerializer(read_only=True)
-    author_id = serializers.PrimaryKeyRelatedField(
-        queryset=Author.objects.all(), source="author", write_only=True
-    )
-    publisher_id = serializers.PrimaryKeyRelatedField(
-        queryset=Publisher.objects.all(), source="publisher", write_only=True
-    )
+    author_name = serializers.CharField(source='author.name', read_only=True)
+    publisher_name = serializers.CharField(source='publisher.name', read_only=True)
 
     class Meta:
         model = Book
@@ -31,8 +25,7 @@ class BookSerializer(serializers.ModelSerializer):
             "title",
             "genre",
             "price",
-            "author",
-            "publisher",
-            "author_id",
-            "publisher_id",
+            "description",
+            "author_name",
+            "publisher_name",
         ]
