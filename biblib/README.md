@@ -34,17 +34,25 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## Endpoints
+## How to run tests
+```bash
+pytest -v
+
+# If Django settings module is not detected automatically specify manually
+pytest -v --ds=biblib.settings
+```
+
+## authentication endpoints
 
 ### `POST /api/token`
-**Used to:** Access and refresh token
+**Used to:** login user and get access or refresh token
 **Auth:** Not required
 
 **Request Body:**
 ```json
 {
   "username": "user1",
-  "password": "secret"
+  "password": "s1e2c3ret"
 }
 ```
 
@@ -92,27 +100,6 @@ python manage.py runserver
 ```json
 {
   "message": "User registered successfully",
-  "username": "user1"
-}
-```
-
-### `POST /api/auth/login`
-**Used to:** Login user and get JWT token  
-**Auth:** Not required  
-
-**Request Body:**
-```json
-{
-  "username": "user1",
-  "password": "secret123"
-}
-```
-
-**Response 200 OK:**
-```json
-{
-  "access": "OiJKV1QiLCJhbGci...",
-  "refresh": "OiJIUzI1NiIsInR5..."
 }
 ```
 
@@ -166,7 +153,7 @@ Key: Content-Type: application/json
 
 ### `GET /api/books`
 **Used to:** Get all books  
-**Auth:** Required (`<access_token>`)
+**Auth:** No Required - for all users
 
 **Response 200 OK:**
 ```json
@@ -176,9 +163,46 @@ Key: Content-Type: application/json
     "title": "The City",
     "genre": "Novel",
     "price": 250,
-    "author": "Valerian Pidmohylnyi",
-    "publisher": "A-BA-BA-HA-LA-MA-HA",
+    "author": "1",
+    "publisher": "2",
+    "author_name": "Valerian Pidmohylnyi",
+    "publisher_name": "A-BA-BA-HA-LA-MA-HA",
     "description": "A Ukrainian classic novel..."
+  }
+]
+```
+
+
+### `POST /api/books`
+**Used to:** Add a new book  *(admin only)*
+**Auth:** Required (`<access_token>`)
+
+
+**Request body:**
+```json
+[
+  {
+    "title": "The City",
+    "genre": "Novel",
+    "price": 250,
+    "author": "1",
+    "publisher": "2",
+    "description": "optional: A Ukrainian classic novel..."
+  }
+]
+```
+
+**Response 201 CREATED:**
+```json
+[
+  {
+    "id": 1,
+    "title": "The City",
+    "genre": "Novel",
+    "price": 250,
+    "author_name": "Valerian Pidmohylnyi",
+    "publisher_name": "A-BA-BA-HA-LA-MA-HA",
+    "description": "null or A Ukrainian classic novel..."
   }
 ]
 ```
@@ -195,10 +219,57 @@ Key: Content-Type: application/json
   "genre": "Novel",
   "price": 250,
   "description": "A Ukrainian classic novel about the urban soul.",
-  "author": {"id": 2, "name": "Valerian Pidmohylnyi"},
-  "publisher": {"id": 1, "name": "A-BA-BA-HA-LA-MA-HA"}
+  "author": 2,
+  "publisher": 1,
+  "author_name": "Valerian Pidmohylnyi",
+  "publisher_name": "A-BA-BA-HA-LA-MA-HA",
 }
 ```
+
+### `PUT /api/books/:book_id`
+**Used to:** Update an existing book by its id  *(admin only)*
+**Auth:** Required (`<access_token>`)
+
+
+**Request body:**
+```json
+[
+  {
+    "title": "The City",
+    "genre": "Novel",
+    "price": 250,
+    "author": "1",
+    "publisher": "2",
+    "description": "optional: Updated edition: A Ukrainian classic novel..."
+  }
+]
+
+**Response 200 OK:**
+```json
+[
+  {
+    "id": 1,
+    "title": "The City",
+    "genre": "Novel",
+    "price": 250,
+    "author_name": "Valerian Pidmohylnyi",
+    "publisher_name": "A-BA-BA-HA-LA-MA-HA",
+    "description": "null or Updated edition: A Ukrainian classic novel..."
+  }
+]
+```
+
+### `DELETE /api/books/:book_id`
+**Used to:** Delete a book  *(admin only)*
+**Auth:** Required (`<access_token>`)
+
+**Response 200 OK:**
+```json
+{
+  "message": "Book deleted successfully"
+}
+```
+
 
 ## Front
 
